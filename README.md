@@ -15,5 +15,6 @@
   - The top 2% of the images that have the highest score for that attribute, labeled as **1**.
   - The top 2% of the image that have the lowest score, labeled as **-1**.
   - Such that each dataset you create has two classes and a size of 4% of the total size of your original set of images.
+  - The percentage by default is 2% but you can choose it in the notebook.
 
 # InterFaceGAN.ipynb
