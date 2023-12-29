@@ -40,7 +40,7 @@ def main():
         description="Classify images in a dataset and create two sets of images per attribute in order to apply InterFaceGAN on them.")
     parser.add_argument("dataset_path")
     parser.add_argument("output_path")
-    parser.add_argument("-p", "--proportion", help="Proportion of images to put to each group of each attribute", default=0.02)
+    parser.add_argument("-p", "--proportion", help="Percentage of images to put to each group of each attribute", default=2.0, type=float)
     args = parser.parse_args()
     """if len(sys.argv) != 3:
         print(f"Usage: python3 {sys.argv[0]} <path to folder containing images> <path to output folder>")
@@ -75,7 +75,7 @@ def main():
         with open(os.path.join(args.output_path, f"att{att}_scores.json"), "w") as outfile:
             json.dump(dict(filenames_and_scores[att]), outfile)
         filenames_and_scores[att].sort(key=lambda p: p[1])
-        num_top = int(args.proportion*len(filenames))
+        num_top = int(args.proportion*len(filenames)/100)
         filenames_minus1 = [(p[0], -1) for p in filenames_and_scores[att][:num_top]]
         filenames_plus1 = [(p[0], 1) for p in filenames_and_scores[att][-num_top:]]
         with open(os.path.join(args.output_path, f"att{att}_labels.json"), "w") as outfile:
