@@ -35,7 +35,7 @@ class EfficientNetB0(nn.Module):
     
 def main():
     if len(sys.argv) != 3:
-        print(f"Usage: {sys.argv[0]} <path to folder containing images> <path to output folder>")
+        print(f"Usage: python3 {sys.argv[0]} <path to folder containing images> <path to output folder>")
         return 1
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     net = EfficientNetB0()
@@ -44,7 +44,7 @@ def main():
     net.eval()
     
     filenames = [f for f in os.listdir(sys.argv[1]) if isfile(os.path.join(sys.argv[1], f))]
-    batch_size = 3
+    batch_size = 1
     filenames_and_scores = [[] for _ in range(40)]
     totensor = transforms.ToTensor()
     for i in tqdm(range(0, len(filenames), batch_size)):
@@ -55,7 +55,8 @@ def main():
             if not isfile(path):
                 continue
             img = Image.open(path)
-            batch[j] = totensor(img)
+            batch[j] = 255*totensor(img)
+            img.close()
         batch = batch.to(device)
         with torch.inference_mode():
             out = net(batch).cpu()
@@ -66,7 +67,7 @@ def main():
         with open(os.path.join(sys.argv[2], f"att{att}_scores.json"), "w") as outfile:
             json.dump(dict(filenames_and_scores[att]), outfile)
         filenames_and_scores[att].sort(key=lambda p: p[1])
-        num_top = 10
+        num_top = 100
         filenames_minus1 = [(p[0], -1) for p in filenames_and_scores[att][:num_top]]
         filenames_plus1 = [(p[0], 1) for p in filenames_and_scores[att][-num_top:]]
         with open(os.path.join(sys.argv[2], f"att{att}_labels.json"), "w") as outfile:
