@@ -1,7 +1,7 @@
 # GANSpace-Reimplementation
 
 
-# ImageCreator.ipynb 
+# ImageGenerator.ipynb 
 - Allows to create sets of images **with their correspoding latent codes in Z** and save them on your Drive.
 - It is recommended to let them on your Drive and working on your Drive for next because of time duration of downloading and uploading on Colab.
 - It is recommended to do batch of less than 5k images (N <= 5_000) because it will take around 15 minutes. It is good to have at least 10k.
@@ -15,6 +15,6 @@
   - The top 2% of the images that have the highest score for that attribute, labeled as **1**.
   - The top 2% of the image that have the lowest score, labeled as **-1**.
   - Such that each dataset you create has two classes and a size of 4% of the total size of your original set of images.
-  - The percentage by default is 2% but you can choose it in the notebook.
+  - The percentage by default is 2% but you can choose it in the notebook by changing the parameter "proportion".
 
 # InterFaceGAN.ipynb
