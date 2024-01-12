@@ -2,6 +2,8 @@
 
 
 # ImageGenerator.ipynb 
+Note : we did not use the truncation trick, i.e. put the arg truncation_psi = 0.7 in the G.mapping. This tricks brings every points closer to the barycenter
+of W, leading to more stable generation, less artefacts.
 - Allows to create sets of images **with their correspoding latent codes in Z** and save them on your Drive.
 - It is recommended to let them on your Drive and working on your Drive for next because of time duration of downloading and uploading on Colab.
 - It is recommended to do batch of less than 5k images (N <= 5_000) because it will take around 15 minutes. It is good to have at least 10k.
