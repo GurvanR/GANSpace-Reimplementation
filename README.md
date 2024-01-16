@@ -1,5 +1,8 @@
 # GANSpace-Reimplementation
+See our report.pdf if you want further and complementary information on our project. 
+Here are the notebooks in the right order.
 
+# GANSpace.ipynb
 
 # ImageGenerator.ipynb 
 Note : we did not use the truncation trick, i.e. put the arg truncation_psi = 0.7 in the G.mapping. This tricks brings every points closer to the barycenter
@@ -20,3 +23,8 @@ of W, leading to more stable generation, less artefacts.
   - The percentage by default is 2% but you can choose it in the notebook by changing the parameter "proportion".
 
 # InterFaceGAN.ipynb
+
+# GANsBenchmarking.ipynb
+
+
+
