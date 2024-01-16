@@ -2,6 +2,8 @@
 See our report.pdf if you want further and complementary information on our project. 
 Here are the notebooks in the right order.
 
+The file atclas2.pt contains weights for the attribute classifier (cf ImageDiscriminator.ipynb).
+
 # GANSpace.ipynb
 
 # ImageGenerator.ipynb 
